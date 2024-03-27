@@ -5,6 +5,7 @@ Welcome to the School Management Program repository. This application is designe
 ## Features
 
 - **Mcamera Localization Package:** Provides localization features for the program.
+- **Spatie translatable Package:** Provides multiple languages features for the program.
 - **CRUD Operations:** Create, Read, Update, and Delete operations for managing school data.
 - **Seeding:** Initial data seeding for the application.
 - **Form Wizard with Livewire:** Interactive form wizard using Livewire for a smooth user experience.
