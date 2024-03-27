@@ -11,7 +11,6 @@ Welcome to the School Management Program repository. This application is designe
 - **Form Wizard with Livewire:** Interactive form wizard using Livewire for a smooth user experience.
 - **Real-Time Validation:** Validate forms in real-time to enhance user input accuracy.
 - **File Management:** Upload, download, and delete files from both the database and the server.
-- **Design Patterns:** Implemented design patterns to enhance code structure and maintainability.
 - **Relationships:** Handles one-to-many and many-to-many relationships in the database.
 - **Fee Processing and Accounting:** Manages fees and accounting processes within the school.
 - **Indirect Zoom Meeting:** indirect Integration with Zoom for meetings.
