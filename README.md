@@ -1,6 +1,6 @@
 # School Management Program
 
-Welcome to the School Management Program repository. This application is designed to manage various aspects of a school, including localization, CRUD operations, seeding, form wizard using Livewire, real-time validation, file management, a 'little' of design patterns, relationships, fee processing, accounting, indirect Zoom meetings, multi-authentication, dashboards for admin, teacher, student, and parent, calendar and events, and a quiz system.
+Welcome to the School Management Program repository. This application is designed to manage various aspects of a school, including localization, CRUD operations, seeding, form wizard using Livewire, real-time validation, file management, attendance and absence system, relationships, fee processing, accounting, indirect Zoom meetings, multi-authentication, dashboards for admin, teacher, student, and parent, calendar and events, and a quiz system.
 
 ## Features
 
@@ -11,6 +11,7 @@ Welcome to the School Management Program repository. This application is designe
 - **Form Wizard with Livewire:** Interactive form wizard using Livewire for a smooth user experience.
 - **Real-Time Validation:** Validate forms in real-time to enhance user input accuracy.
 - **File Management:** Upload, download, and delete files from both the database and the server.
+- **Attendance and absence system:**Building an attendance and absence system for students involves tracking their attendance in classes.
 - **Relationships:** Handles one-to-one, one-to-many and many-to-many  relationships in the database.
 - **Fee Processing and Accounting:** Manages fees and accounting processes within the school.
 - **Indirect Zoom Meeting:** indirect Integration with Zoom for meetings.
