@@ -14,8 +14,8 @@ class QuestionController extends Controller
 
   public function index()
   {
+    //
   }
-
 
 
   public function create()
@@ -23,11 +23,8 @@ class QuestionController extends Controller
     //
   }
 
-
-
   public function store(Request $request)
   {
-
     if ($request) {
       Question::create([
         "title" => $request->title,
@@ -41,8 +38,6 @@ class QuestionController extends Controller
     }
   }
 
-
-
   public function show($id)
   {
     $questions = Question::where("quizze_id", $id)->get();
@@ -50,22 +45,17 @@ class QuestionController extends Controller
     return view("pages.Teachers.dashboard.questions.index", compact("questions", "quiz"));
   }
 
-
   public function add_questions($id)
   {
     $quiz = Quiz::findOrfail($id);
     return view("pages.Teachers.dashboard.questions.add", compact("quiz"));
   }
 
-
-
   public function edit($id)
   {
     $question = Question::findOrFail($id);
     return view("pages.Teachers.dashboard.questions.edit", compact("question"));
   }
-
-
 
   public function update(Request $request, $id)
   {
@@ -82,7 +72,6 @@ class QuestionController extends Controller
     }
   }
 
-
   public function destroy($id)
   {
     $Question = Question::findOrFail($id);
@@ -90,7 +79,6 @@ class QuestionController extends Controller
     toastr()->success(trans('messages.Delete'));
     return redirect()->route('question.show', $Question->quizze_id);
   }
-
 
   public function show_results($quiz_id)
   {

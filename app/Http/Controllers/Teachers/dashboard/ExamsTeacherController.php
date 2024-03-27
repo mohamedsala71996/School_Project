@@ -3,33 +3,37 @@
 namespace App\Http\Controllers\Teachers\dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Repository\ExamsTeacher\ExamsTeacherRepositoryInterface;
+use App\Models\Exam;
+use Exception;
 use Illuminate\Http\Request;
 
 class ExamsTeacherController extends Controller
 {
-
-    protected $Exam;
-
-    public function __construct(ExamsTeacherRepositoryInterface $Exam)
-    {
-        $this->Exam = $Exam;
-    }
-
     public function index()
     {
-        return $this->Exam->index();
+        $exams = Exam::get();
+        return view('pages.Teachers.dashboard.Exams.index', compact('exams'));
     }
 
     public function create()
     {
-        return $this->Exam->create();
+        return view('pages.Teachers.dashboard.Exams.create');
     }
 
 
     public function store(Request $request)
     {
-        return $this->Exam->store($request);
+        try {
+            $exams = new Exam();
+            $exams->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
+            $exams->term = $request->term;
+            $exams->academic_year = $request->academic_year;
+            $exams->save();
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('ExamsTeacher.create');
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 
     public function show($id)
@@ -39,16 +43,33 @@ class ExamsTeacherController extends Controller
 
     public function edit($id)
     {
-        return $this->Exam->edit($id);
+        $exam = Exam::findorFail($id);
+        return view('pages.Teachers.dashboard.Exams.edit', compact('exam'));
     }
 
     public function update(Request $request)
     {
-        return $this->Exam->update($request);
+        try {
+            $exam = Exam::findorFail($request->id);
+            $exam->name = ['en' => $request->Name_en, 'ar' => $request->Name_ar];
+            $exam->term = $request->term;
+            $exam->academic_year = $request->academic_year;
+            $exam->save();
+            toastr()->success(trans('messages.Update'));
+            return redirect()->route('ExamsTeacher.index');
+        } catch (Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
     }
 
     public function destroy(Request $request)
     {
-        return $this->Exam->destroy($request);
+        try {
+            Exam::destroy($request->id);
+            toastr()->error(trans('messages.success'));
+            return redirect()->back();
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 }

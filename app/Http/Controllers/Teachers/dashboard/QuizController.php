@@ -12,13 +12,11 @@ use Illuminate\Http\Request;
 
 class QuizController extends Controller
 {
-
     public function index()
     {
         $quizzes = Quiz::where('teacher_id', auth()->user()->id)->get();
         return view('pages.Teachers.dashboard.Quizzes.index', compact('quizzes'));
     }
-
 
     public function create()
     {
@@ -26,7 +24,6 @@ class QuizController extends Controller
         $data['subjects'] = Subject::where('teacher_id', auth()->user()->id)->get();
         return view('pages.Teachers.dashboard.Quizzes.create', $data);
     }
-
 
     public function store(Request $request)
     {
@@ -46,8 +43,6 @@ class QuizController extends Controller
         }
     }
 
-
-
     public function edit($id)
     {
         $quizz = Quiz::findorFail($id);
@@ -55,7 +50,6 @@ class QuizController extends Controller
         $data['subjects'] = Subject::where('teacher_id', auth()->user()->id)->get();
         return view('pages.Teachers.dashboard.Quizzes.edit', $data, compact('quizz'));
     }
-
 
     public function update(Request $request)
     {
@@ -75,7 +69,6 @@ class QuizController extends Controller
         }
     }
 
-
     public function destroy($id)
     {
         try {
@@ -93,7 +86,6 @@ class QuizController extends Controller
         return $list_classes;
     }
 
-    //Get Sections
     public function Get_Sectionss($id)
     {
 

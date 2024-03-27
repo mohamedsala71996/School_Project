@@ -10,15 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class LibraryController extends Controller
 {
-
     public function index()
     {
         $Library = library::all();
 
         return view("pages.Library.index", compact("Library"));
     }
-
-
 
     public function create()
     {
@@ -27,11 +24,8 @@ class LibraryController extends Controller
         return view("pages.Library.create", compact("grades"));
     }
 
-
     public function store(Request $request)
     {
-
-
         $file_name = $request->file('file_name')->getClientOriginalName();
         library::create([
             "title" => $request->title,
@@ -47,12 +41,10 @@ class LibraryController extends Controller
         return redirect()->route('Library.index');
     }
 
-
     public function show(library $library)
     {
         //
     }
-
 
     public function edit($id)
     {
@@ -61,7 +53,6 @@ class LibraryController extends Controller
 
         return view("pages.Library.edit", compact("grades", "book"));
     }
-
 
     public function update(Request $request)
     {
@@ -94,8 +85,6 @@ class LibraryController extends Controller
         return redirect()->route('Library.index');
     }
 
-
-
     public function destroy(Request $request)
     {
 
@@ -105,12 +94,10 @@ class LibraryController extends Controller
         return redirect()->back();
     }
 
-
     public function download_file($name)
     {
         $myFile = public_path("books/books/" . $name);
 
         return response()->download($myFile);
     }
-    
 }

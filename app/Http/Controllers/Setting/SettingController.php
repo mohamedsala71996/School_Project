@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
-
     public function index()
     {
         $collection = Setting::all();
@@ -20,7 +19,6 @@ class SettingController extends Controller
         );
         return view("pages.Setting.index", $setting);
     }
-
 
 
     public function create()
@@ -63,7 +61,6 @@ class SettingController extends Controller
         toastr()->success(trans('messages.Update'));
         return back();
     }
-
 
     public function destroy(Setting $setting)
     {

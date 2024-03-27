@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 class SectionController extends Controller
 {
 
-
   public function index()
   {
 
@@ -23,9 +22,9 @@ class SectionController extends Controller
     return view("pages.Sections.Sections", compact('grades', 'grades_all', 'teachers'));
   }
 
-
   public function create()
   {
+
   }
 
   public function store(StoreSectionRequest $request)
@@ -43,18 +42,15 @@ class SectionController extends Controller
     return redirect()->route('section.index');
   }
 
-
   public function show($id)
   {
 
   }
 
-
   public function edit($id)
   {
 
   }
-
 
   public function update(StoreSectionRequest $request)
   {

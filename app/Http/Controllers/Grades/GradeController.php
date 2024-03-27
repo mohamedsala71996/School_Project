@@ -11,8 +11,6 @@ use App\Models\Grade;
 
 class GradeController extends Controller
 {
-
-
   public function index()
   {
     $grades = Grade::get();
@@ -20,18 +18,14 @@ class GradeController extends Controller
     return view("pages.Grades.grade_list", compact("grades"));
   }
 
-
   public function create()
   {
   }
 
   public function store(StoreGreadeRequest $request)
   {
-
     $validated = $request->validated();
-
     $grade = new Grade;
-
     $grade->Name = ["en" => $request->name_en, "ar" => $request->name_ar];
     $grade->Notes = $request->notes;
     $grade->save();
@@ -40,7 +34,6 @@ class GradeController extends Controller
 
     return redirect()->route('grade.index');
   }
-
 
   public function show($id)
   {

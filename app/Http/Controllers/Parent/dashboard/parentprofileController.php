@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class parentprofileController extends Controller
 {
-
     public function index()
     {
         $information = My_Parent::findOrFail(auth()->user()->id);
@@ -17,10 +16,8 @@ class parentprofileController extends Controller
         return view("pages.parents.profile", compact("information"));
     }
 
-
     public function update(Request $request)
     {
-
         if ($request->password != null) {
             My_Parent::findOrFail(auth()->user()->id)->update([
 

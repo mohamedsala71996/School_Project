@@ -20,14 +20,12 @@ class StudentsTeacherController extends Controller
         return view("pages.Teachers.dashboard.students.index", compact("students"));
     }
 
-
     public function Sections_method()
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck("section_id");
         $sections = Section::whereIn("id", $ids)->get();
         return view("pages.Teachers.dashboard.sections.index", compact("sections"));
     }
-
 
     public function attendance()
     {
@@ -37,13 +35,11 @@ class StudentsTeacherController extends Controller
         return view("pages.Teachers.dashboard.attendance.sections", compact("grades", "sections"));
     }
 
-
     public function attendanceShow($id)
     {
         $student = student::where("section_id", $id)->with("Attendance")->get();
         return view("pages.Teachers.dashboard.attendance.index", compact("student"));
     }
-
 
     public function store_attendance(Request $request)
     {
@@ -74,14 +70,12 @@ class StudentsTeacherController extends Controller
         return redirect()->back();
     }
 
-
     public function attendance_report(Request $request)
     {
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck("section_id");
         $students = Student::whereIn("section_id", $ids)->get();
         return view("pages.Teachers.dashboard.attendance.attendance_report", compact("students"));
     }
-
 
     public function attendance_report_show(Request $request)
     {

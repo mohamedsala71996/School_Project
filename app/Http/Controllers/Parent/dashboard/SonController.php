@@ -13,26 +13,21 @@ use Illuminate\Http\Request;
 class SonController extends Controller
 {
 
-
     public function index()
     {
         $sons = Student::where("parent_id", auth()->user()->id)->get();
         return view('pages.parents.sons.index', compact("sons"));
     }
 
-
     public function create()
     {
         //
     }
 
-
     public function store(Request $request)
     {
         //
     }
-
-
 
     public function show($id_student)
     {
@@ -92,9 +87,7 @@ class SonController extends Controller
 
     public function receipt_sons($id_student)
     {
-
         $ids = Student::where("parent_id", auth()->user()->id)->pluck("id");
-
         foreach ($ids as $id) {
             if ($id == $id_student) {
                 $receipt_students = ReceiptStudent::where("student_id", $id)->get();

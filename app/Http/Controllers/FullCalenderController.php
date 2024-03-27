@@ -19,7 +19,6 @@ class FullCalenderController extends Controller
 		return view('full-calender');
 	}
 
-
 	public function action(Request $request)
 	{
 		if ($request->ajax()) {

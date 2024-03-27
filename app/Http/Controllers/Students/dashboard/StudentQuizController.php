@@ -10,8 +10,6 @@ use App\Models\Result;
 
 class StudentQuizController extends Controller
 {
-
-
     public function index()
     {
         $Quizes = Quiz::where("grade_id", auth()->user()->Grade_id)
@@ -22,14 +20,10 @@ class StudentQuizController extends Controller
         return view("pages.Students.dashboard.quiz.index", compact("Quizes"));
     }
 
-
-
     public function create()
     {
         //
     }
-
-
 
     public function store(Request $request)
     {
@@ -69,19 +63,16 @@ class StudentQuizController extends Controller
     }
 
 
-
     public function edit(string $id)
     {
         //
     }
 
 
-
     public function update(Request $request, string $id)
     {
         //
     }
-
 
 
     public function destroy(string $id)

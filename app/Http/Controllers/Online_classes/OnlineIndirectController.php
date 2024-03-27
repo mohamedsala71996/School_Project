@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 
 class OnlineIndirectController extends Controller
 {
-
     public function index()
     {
 
@@ -18,13 +17,11 @@ class OnlineIndirectController extends Controller
         return view("pages.online_classes.index", compact("OnlineIndirect"));
     }
 
-
     public function create()
     {
         $Grades = Grade::all();
         return view("pages.online_classes.add", compact("Grades"));
     }
-
 
     public function store(Request $request)
     {
@@ -45,18 +42,15 @@ class OnlineIndirectController extends Controller
         return redirect()->route('OnlineIndirect.index');
     }
 
-
     public function show(OnlineIndirect $onlineIndirect)
     {
         //
     }
 
-
     public function edit(OnlineIndirect $onlineIndirect)
     {
         //
     }
-
 
     public function update(Request $request, OnlineIndirect $onlineIndirect)
     {
@@ -65,7 +59,6 @@ class OnlineIndirectController extends Controller
 
     public function destroy(Request $request)
     {
-
         OnlineIndirect::destroy($request->id);
         toastr()->success(trans('messages.Delete'));
         return redirect()->route('OnlineIndirect.index');

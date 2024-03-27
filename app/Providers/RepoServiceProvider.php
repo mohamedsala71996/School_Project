@@ -37,19 +37,6 @@ class RepoServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(TeacherRepositoryInterface::class, TeacherRepository::class);
-        $this->app->bind(StudentRepositoryInterface::class, StudentRepository::class);
-        $this->app->bind(promotionsRepositoryInterface::class, promotionsRepository::class);
-        $this->app->bind(graduatedRepositoryInterface::class, graduatedRepository::class);
-        $this->app->bind(FeesRepositoryInterface::class, FeesRepository::class);
-        $this->app->bind(FeeInvoicesRepositoryInterface::class, FeeInvoicesRepository::class);
-        $this->app->bind(ReceiptStudentRepositoryInterface::class, ReceiptStudentRepository::class);
-        $this->app->bind(ProcessFeeRepositoryInterface::class, ProcessFeeRepository::class);
-        $this->app->bind(PaymentRepositoryInterface::class, PaymentRepository::class);
-        $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);
-        $this->app->bind(SubjectRepositoryInterface::class, SubjectRepository::class);
-        $this->app->bind(ExamRepositoryInterface::class, ExamRepository::class);
-        $this->app->bind(ExamsTeacherRepositoryInterface::class, ExamsTeacherRepository::class);
     }
 
     /**

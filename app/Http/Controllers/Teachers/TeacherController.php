@@ -5,65 +5,77 @@ namespace App\Http\Controllers\Teachers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\storeTeacherRequest;
 use App\Models\Teacher;
-use App\Repository\TeacherRepositoryInterface;
+use App\Models\Gender;
+use App\Models\Specialization;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-
-    private TeacherRepositoryInterface $TeacherRepository;
-
-    public function __construct(TeacherRepositoryInterface $TeacherRepository)
-    {
-        $this->TeacherRepository = $TeacherRepository;
-    }
-
     public function index()
     {
-        $AllTeachers = $this->TeacherRepository->getAllTeachers();
+        $AllTeachers = Teacher::all();
         return view("pages.Teachers.Teachers", compact("AllTeachers"));
     }
 
-
     public function create()
     {
-        $genders = $this->TeacherRepository->getGender();
-        $Specialization = $this->TeacherRepository->getSpecialization();
+        $genders = Gender::all();
+        $Specialization = Specialization::all();
 
         return view("pages.Teachers.create", compact("genders", "Specialization"));
     }
 
     public function store(storeTeacherRequest $request)
     {
-        return $this->TeacherRepository->addTeachers($request);
+        $validated = $request->validated();
+        Teacher::create([
+            'email' => $request->Email,
+            'password' => $request->password,
+            'Name' => ["en" => $request->Name_en, "ar" => $request->Name_ar],
+            'Specialization_id' => $request->Specialization_id,
+            'Gender_id' => $request->Gender_id,
+            'Joining_Date' => $request->Joining_Date,
+            'Address' => $request->Address,
+        ]);
+        session()->flash('add', trans('messages.success'));
+        return redirect()->route('teacher.index');
     }
-
 
     public function show(Teacher $teacher)
     {
         //
     }
 
-
     public function edit($id)
     {
 
-        $teacher = $this->TeacherRepository->getOneTeacher($id);
-        $genders = $this->TeacherRepository->getGender();
-        $Specialization = $this->TeacherRepository->getSpecialization();
+        $teacher = Teacher::find($id);
+        $genders = Gender::all();
+        $Specialization = Specialization::all();
 
         return view("pages.Teachers.Edit", compact("genders", "Specialization", "teacher"));
     }
 
-
     public function update(storeTeacherRequest $request, $id)
     {
-        return $this->TeacherRepository->updateTeacher($request, $id);
+        $teacher = Teacher::find($id);
+        $teacher->update([
+            'email' => $request->email,
+            'password' => $request->password,
+            'Name' => ["en" => $request->Name_en, "ar" => $request->Name_ar],
+            'Specialization_id' => $request->Specialization_id,
+            'Gender_id' => $request->Gender_id,
+            'Joining_Date' => $request->Joining_Date,
+            'Address' => $request->Address,
+        ]);
+        session()->flash('add', trans('messages.success'));
+        return redirect()->route('teacher.index');
     }
-
 
     public function destroy(Request $request)
     {
-        return $this->TeacherRepository->deleteTeacher($request);
+        Teacher::find($request->id)->delete();
+        session()->flash('add', trans('messages.Delete'));
+        return redirect()->route('teacher.index');
     }
 }
