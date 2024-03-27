@@ -5,31 +5,18 @@ Welcome to the School Management Program repository. This application is designe
 ## Features
 
 - **Mcamera Localization Package:** Provides localization features for the program.
-- 
 - **Spatie translatable Package:** Provides multiple languages features for the program.
-- 
 - **CRUD Operations:** Create, Read, Update, and Delete operations for managing school data.
-- 
 - **Seeding:** Initial data seeding for the application.
-- 
 - **Form Wizard with Livewire:** Interactive form wizard using Livewire for a smooth user experience.
-- 
 - **Real-Time Validation:** Validate forms in real-time to enhance user input accuracy.
-- 
 - **File Management:** Upload, download, and delete files from both the database and the server.
-- 
 - **Attendance and absence system:** Building an attendance and absence system for students involves tracking their attendance in classes.
-
 - **Relationships:** Handles one-to-one, one-to-many and many-to-many  relationships in the database.
-- 
 - **Fee Processing and Accounting:** Manages fees and accounting processes within the school.
-- 
 - **Indirect Zoom Meeting:** indirect Integration with Zoom for meetings.
-- 
 - **Multi Auth and Dashboards:** Multi-authentication system with separate dashboards for admin, teacher, student, and parent.
-- 
 - **Calendar and Events:** Keep track of school events and manage the academic calendar.
-- 
 - **Quiz System:** Teachers can create quizzes for students, and students can answer them to receive marks.
 
 ## Getting Started
